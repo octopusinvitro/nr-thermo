@@ -19,11 +19,13 @@ There are three computational physics problems proposed:
 * **Folder `pvdiagrams`:** Pressure-Volume (PV) diagrams and the *van der Waals* equation.
 * **Folder `gibbs`:** Vapor-liquid equilibrium and calculation of the excess Gibbs potential.
 
-The **Numerical Recipes** libraries used for this calculations are stored in the folder `nr` which you can also install in your system and load them normally if you prefer. Check the NR documentation to learn more about it.
+The **Numerical Recipes** libraries used for this calculations are stored in the folder `nr`, but you can also install them in your system and load them normally, if you prefer. Check the NR documentation to learn more about it.
 
-The libraries in the `nr` folder used for these computational physics problems is NOT included due to [license restrictions](http://www.nr.com/licenses/redistribute.html).
+The libraries in the `nr` folder used for these computational physics problems are NOT included due to [license restrictions](http://www.nr.com/licenses/redistribute.html). The snippets might not work without them.
 
 ## Compiling and running
+
+The `-lm` is needed to link the math libraries.
 
 ### Compile:
 
