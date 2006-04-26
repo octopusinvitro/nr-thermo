@@ -1,0 +1,57 @@
+Number of points = 9
+Number of parameters of the function = 3
+
+Vectors x and y:
+
+ E[1] = 0.000 	 Sig[1] = 10.600 	 dSigma[1] = 0.100
+ E[2] = 25.000 	 Sig[2] = 16.000 	 dSigma[2] = 0.100
+ E[3] = 50.000 	 Sig[3] = 45.000 	 dSigma[3] = 0.100
+ E[4] = 75.000 	 Sig[4] = 83.500 	 dSigma[4] = 0.100
+ E[5] = 100.000 	 Sig[5] = 52.800 	 dSigma[5] = 0.100
+ E[6] = 125.000 	 Sig[6] = 19.900 	 dSigma[6] = 0.100
+ E[7] = 150.000 	 Sig[7] = 10.800 	 dSigma[7] = 0.100
+ E[8] = 175.000 	 Sig[8] = 8.250 	 dSigma[8] = 0.100
+ E[9] = 200.000 	 Sig[9] = 4.700 	 dSigma[9] = 0.100
+
+
+
+Parameters (initial values):
+ a[1] = 70000.000 
+ a[2] = 75.000 
+ a[3] = 60.000 
+
+Exit on iter = 7 
+
+Parameters (after calculations):
+ a[1] = 66886.390 	 da[1]: 183.516 
+ a[2] = 77.494 	 da[2]: 0.039 
+ a[3] = 56.174 	 da[3]: 0.095 
+
+Chi squared = 2106.575 
+n = 4
+
+
+Covariance matrix:
+
+ covar[1][1] = 33678.240 	 covar[1][2] = -0.815 	 covar[1][3] = 16.426 	
+ covar[2][1] = -0.815 	 covar[2][2] = 0.002 	 covar[2][3] = -0.000 	
+ covar[3][1] = 16.426 	 covar[3][2] = -0.000 	 covar[3][3] = 0.009 	
+
+
+Alpha matrix:
+
+ alpha[1][1] = 0.000 	 alpha[1][2] = -0.018 	 alpha[1][3] = -0.524 	
+ alpha[2][1] = -0.018 	 alpha[2][2] = 679.467 	 alpha[2][3] = 71.049 	
+ alpha[3][1] = -0.524 	 alpha[3][2] = 71.049 	 alpha[3][3] = 1077.181 	
+
+Data points recalculated from the fit:
+
+Sigma[1] = 9.845		dSigma[1] = 0.029
+Sigma[2] = 18.871		dSigma[2] = 0.058
+Sigma[3] = 43.298		dSigma[3] = 0.152
+Sigma[4] = 84.123		dSigma[4] = 0.364
+Sigma[5] = 51.633		dSigma[5] = 0.190
+Sigma[6] = 21.961		dSigma[6] = 0.069
+Sigma[7] = 11.063		dSigma[7] = 0.032
+Sigma[8] = 6.496		dSigma[8] = 0.019
+Sigma[9] = 4.234		dSigma[9] = 0.012
