@@ -1,7 +1,7 @@
 /**********************************************************************************
  * PVDIAGRAM: Program that uses the van der Waals equation to calculate
- *				the curves of the relevant isotherms in the regions that 
- *				make sense in a P-V diagrama
+ *				the curves of the relevant isotherms in the regions that
+ *				make sense in a P-V diagra
  * APPLICATION: Plotting p and v in a PV diagram, for the case of acetone.
  **********************************************************************************/
 #include <stdio.h>
@@ -29,7 +29,7 @@ int main(void) {
 		exit(1);
 	}
 
-	/* At an experiment we will have a bunch of measurements of v for certain T */	
+	/* At an experiment we will have diff v measurements for diff Ts */
 	do {
 		/***************************************************
 		 * Data input
@@ -45,22 +45,21 @@ int main(void) {
 		printf(     "Number of points = %d\n", N);
 		fprintf(fp, "Number of points = %d\n", N);
 		getchar();
-		
+
 		/***************************************************
-		 * NR vector and matrix declaration
+		 * NR vector declaration
 		 ***************************************************/
 		v = dvector(1,N);
 		p = dvector(1,N);
-		
+
 		/***************************************************
-		 * Filling in vectors 
+		 * Filling in vectors
 		 ***************************************************/
 		read1col(N, v, name);
-		for (i=1; i<=N; i++)
+		printf(     "\n%15s %15s\n", "v [L/mol]", "p [atm]");
+		fprintf(fp, "\n%15s %15s\n", "v [L/mol]", "p [atm]");
+		for (i=1; i<=N; i++) {
 			p[i] = (R*T / (v[i]-b)) - (a / pow(v[i],2));
-		printf(     "\n%15s %15s\n", "v [L/mol]", "p [atm]");   
-		fprintf(fp, "\n%15s %15s\n", "v [L/mol]", "p [atm]");   
-		for(i=1; i<=N; i++) {
 			printf(     "\n v[%d] = %3.3lf    p[%d] = %3.3lf", i, v[i], i, p[i]); //%15.6lf
 			fprintf(fp, "\n v[%d] = %3.3lf    p[%d] = %3.3lf", i, v[i], i, p[i]);
 		}
@@ -68,18 +67,17 @@ int main(void) {
 		// Separator
 		printf(     "\n\n");
 		fprintf(fp, "\n\n");
-		
+
 		/***************************************************
-	 	* Free memory
+		* Free memory
 		 ***************************************************/
 		free_dvector(p,1,N);
 		free_dvector(v,1,N);
 
 		printf("Repeat for another temperature? (Y/N): ");
 		scanf("%c", &repeat);
-	}
 
-	while(repeat == 'y' || repeat == 'Y');
+	} while(repeat == 'y' || repeat == 'Y');
 
 	getchar();
 }
