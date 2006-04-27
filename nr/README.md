@@ -6,8 +6,10 @@ Because of that, we provide here a list of the libraries in this folder. The sni
 
 ## NR used in these snippets
 
+* balanc.c
 * covsrt.c
 * gaussj.c
+* hqr.c
 * mrqcof.c
 * mrqmin.c
 * nr.h
@@ -16,4 +18,7 @@ Because of that, we provide here a list of the libraries in this folder. The sni
 * polint.c
 * spline.c
 * splint.c
+* zbrac.c
+* zbrent.c
+* zrhqr.c
 
