@@ -28,6 +28,28 @@ int numOfLines(char *filename) {
 
 /***************************************************
  * READ DATA FILE
+ * (Format: one column of data)
+ ***************************************************/
+void read1col(int n, double *x, char *filename) {
+	FILE *fp;
+
+	if ( (fp=fopen(filename, "r")) == NULL ) {
+		printf("\nError opening file\n");
+		exit(1);
+	}
+
+	else {
+		int i;
+		for (i=1; i<=n; i++) {
+            fscanf(fp,"%lf",&x[i]);
+		}
+	}
+
+	fclose(fp);
+}
+
+/***************************************************
+ * READ DATA FILE
  * (Format: two columns of data separated by a space)
  ***************************************************/
 void read2col(int n, double *x, double *y, char *filename) {
@@ -52,7 +74,6 @@ void read2col(int n, double *x, double *y, char *filename) {
  * READ DATA FILE
  * (Format: three columns of data separated by a space)
  ***************************************************/
-
 void read3col(int n, double *x, double *y, double *sig, char *filename) {
 	FILE *fp;
 
