@@ -41,7 +41,7 @@ void read1col(int n, double *x, char *filename) {
 	else {
 		int i;
 		for (i=1; i<=n; i++) {
-            fscanf(fp,"%lf",&x[i]);
+			fscanf(fp,"%lf",&x[i]);
 		}
 	}
 
