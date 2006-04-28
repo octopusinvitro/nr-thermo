@@ -29,7 +29,7 @@ int main(void) {
 	int numOfLines(char *filename);
 	void read1col(int n, double *x, char *filename);
 
-	char repeat, name[10];
+	char name[10];
 	FILE *fp;
 	if ((fp=fopen("output.txt", "w")) == NULL) {
 		printf("\nError opening file\n");
@@ -39,7 +39,7 @@ int main(void) {
 	/***************************************************
 	 * Data input
 	 ***************************************************/
-	printf("\nName of the data file  (v in L/mol): ");
+	printf("\nName of the data file (v in L/mol): ");
 	scanf("%s", name);
 	n = numOfLines(name);
 	printf(		"Number of points = %d", n);
@@ -163,6 +163,7 @@ int main(void) {
 //	free(T);
 //	free(c);
 
+	return 0;
 }
 
 #undef N

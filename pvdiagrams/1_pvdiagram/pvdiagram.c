@@ -80,6 +80,7 @@ int main(void) {
 	} while(repeat == 'y' || repeat == 'Y');
 
 	getchar();
+	return 0;
 }
 
 #undef b
