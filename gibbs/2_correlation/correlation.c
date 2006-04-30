@@ -1,6 +1,6 @@
 /**********************************************************************************
- * GIBBS POTENTIAL:	Calculates the excess Gibbs potential from vapor-liquid
-					equilibrium data.
+ * GIBBS POTENTIAL:	Calculates the coefficients of the equation of Redlich-Kister,
+ * which provide the best description for the data set (x1, gE).
  * APPLICATION:	Study of the system 1,3-dioxolane + hexane at 308.15 K.
  **********************************************************************************/	
 #include <stdio.h>
@@ -8,22 +8,23 @@
 #include <math.h>
 #include "../../nr/nrutil.c"
 #include "../../nr/common.c"
+#include "redkis.c"
 
 #define R 8.31451
 #define T 308.15
 
 int main(void) {
 
-	int n, i;
+	int i, n, m;
 	double *x, *y, *p;
-	double  v1o = 71, 
+	double	v1o = 71, 
 			v2o = 132, 
 			p1o = 21.457, 
 			p2o = 30.636, 
 			B11 = -1439, 
 			B22 = -1726, 
 			B12 = -1396;
-	double *m1E, *m2E, *gE, d12 = 2*B12 - B11 - B22;
+	double *m1E, *m2E, *gE, d12 = 2*B12-B11-B22, *gEc;
 	
 	char name[10];
 	FILE *fp;
@@ -37,20 +38,21 @@ int main(void) {
 	 ***************************************************/
 	printf("\nName of the data file (v in L/mol): ");
 	scanf("%s", name);
-	n = numOfLines(name);
+	n = numOfLines(name)-1;
 	printf(		"Number of points = %d", n);
 	fprintf(fp, "Number of points = %d", n);
 
 	/***************************************************
 	 * NR vector declaration
 	 ***************************************************/
-	x   = dvector(1,n); 
-	y   = dvector(1,n); 
-	p   = dvector(1,n); 
+	x	= dvector(1,n); 
+	y	= dvector(1,n); 
+	p	= dvector(1,n); 
 	m1E = dvector(1,n);
 	m2E = dvector(1,n);
-	gE  = dvector(1,n); 
-	
+	gE	= dvector(1,n); 
+	gEc = dvector(1,n);
+		
 	/***************************************************
 	 * Filling in vectors 
 	 ***************************************************/
@@ -65,7 +67,7 @@ int main(void) {
 		printf(     "\n%10.3lf %10.3lf %10.3lf", x[i], y[i], p[i]);
 		fprintf(fp, "\n%10.3lf %10.3lf %10.3lf", x[i], y[i], p[i]);
 	}
-		
+
 	for (i=1; i<=n; i++) {
 
 		if (x[i] == 0)
@@ -94,9 +96,27 @@ int main(void) {
 		printf(     "\n %10.3lf %10.3lf %10.3lf %10.3lf", x[i], m1E[i], m2E[i], gE[i]);
 		fprintf(fp, "\n %10.3lf %10.3lf %10.3lf %10.3lf", x[i], m1E[i], m2E[i], gE[i]);
 	}
-	
-	printf("\n\n");
 
+	getchar();
+	getchar();
+
+	/***************************************************
+	 * REDLICH-KISTER CALCULATION
+	 ***************************************************/
+	m = 4;
+	redkis(n, m, x, gE, fp, gEc);
+	
+	printf(     "\n%10s %10s\n", "x1", "gEc corrected");	
+	fprintf(fp, "\n%10s %10s\n", "x1", "gEc corrected");
+	for(i=1; i<=n; i++) {
+		printf(     "\n %10.3lf %10.3lf ", x[i], gEc[i]);
+		fprintf(fp, "\n %10.3lf %10.3lf ", x[i], gEc[i]);
+	}
+
+	printf(     "\n\n");
+	fprintf(fp, "\n\n");
+	
+	free_dvector(gEc,1,n);
 	free_dvector(gE,1,n);
 	free_dvector(m2E,1,n);
 	free_dvector(m1E,1,n);
