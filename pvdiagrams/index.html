@@ -1,0 +1,144 @@
+---
+layout:  post
+title:   "Van der Waals equation"
+stitle:  "The problem"
+date:    2005-05-01 04:02:16
+---
+
+			<dl>
+				<dt><strong>Objective:</strong></dt>
+				<dd>To study the <em>van der Waals</em> equation and to determine if it can explain the behaviour of a real gas.</dd>
+
+			<!-- Latex: \left(p+\frac a{v^2}\right)\left(v-b\right)=RT -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfenced><mrow><mi>p</mi><mo>+</mo><mfrac><mi>a</mi><msup><mi>v</mi><mn>2</mn></msup></mfrac></mrow></mfenced><mfenced><mrow><mi>v</mi><mo>-</mo><mi>b</mi></mrow></mfenced><mo>=</mo><mi>R</mi><mi>T</mi></math></p>
+
+				<dt><strong>Application:</strong></dt>
+				<dd>We'll use acetone as the system of study. Its <a href="http://en.wikipedia.org/wiki/Critical_point_%28thermodynamics%29">critical point</a> is known, and has the values: <strong>T<sub>c</sub> = 508.10 K</strong> and <strong>P<sub>c</sub> = 46.35 atm</strong>.</dd>
+			</dl>
+
+			<p>From the expressions for the critical coordinates provided by the model, we obtain:</p>
+
+			<!-- Latex: T_c=\frac8{27}\frac a{Rb} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>T</mi><mi>c</mi></msub><mo>=</mo><mfrac><mn>8</mn><mn>27</mn></mfrac><mfrac><mi>a</mi><mrow><mi>R</mi><mi>b</mi></mrow></mfrac></math></p>
+
+			<!-- Latex: p_c=\frac1{27}\frac a{b^2} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>p</mi><mi>c</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>27</mn></mfrac><mfrac><mi>a</mi><msup><mi>b</mi><mn>2</mn></msup></mfrac></math></p>
+
+			<p>and so, we can calculate the characteristic constants <strong>a = 15.800111 atmL<sup>2</sup>/mol<sup>2</sup></strong> and <strong>b = 0.112363</strong>.</p>
+
+
+			<h2>P-V diagrams</h2>
+			<p>From the real gas equation, we obtain:</p>
+
+			<!-- Latex: p=\frac{RT}{v-b}-\frac a{v^2} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><mo>=</mo><mfrac><mrow><mi>R</mi><mi>T</mi></mrow><mrow><mi>v</mi><mo>-</mo><mi>b</mi></mrow></mfrac><mo>-</mo><mfrac><mi>a</mi><msup><mi>v</mi><mn>2</mn></msup></mfrac></math></p>
+
+			<p>Using the previous equation, we can plot different isotherms in a p-v diagram that will allow us to visualize different situations of interest.</p>
+			<p>Taking an interval of molar volumes from 0 to 2 L/mol, we can use <code>pvdiagram.c</code> (inside the folder <code>pvdiagrams/1_pvdiagram</code>) to calculate the values of the associated pressure <em>p</em> for different temperatures. The program is prepared for the fact that measurements at different temperatures may have a different set of <em>v</em> data, but the results for all temperatures are dumped into a single output file (<code>output.txt</code>).</p>
+			<p>Doing so, we obtain the following p-v diagram, showing the different isothermic curves for each temperature set:</p>
+			
+			<p class="center"><img src="{{ '/img/pvDiagrams.png' | prepend: site.baseurl }}" width="673" height="565" alt="P-V diagram for acetone at different temperatures"></p>
+
+			<table summary="Experimental values of pressure obtained from the molar volume data at different temperatures.">
+				<caption>Experimental values of pressure obtained from the molar volume data at different temperatures.</caption>
+				<thead>
+					<tr>
+						<th>v [L/mol]</th>
+						<th colspan="5">p [atm]</th>
+					</tr>
+					<tr>
+						<th></th>
+						<th>415 K</th>
+						<th>460 K</th>
+						<th>508,10 K</th>
+						<th>530 K</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0.12</td><td>3360.534</td><td>3843.906</td><td>4360.470</td><td>4595.818</td>
+					</tr>
+					<tr>
+						<td>0.13</td><td>995.339</td><td>1204.644</td><td>1428.322</td><td>1530.230</td>
+					</tr>
+					<tr>
+						<td>0.14</td><td>425.697</td><td>559.268</td><td>702.011</td><td>767.046</td>
+					</tr>
+					<tr>
+						<td>0.15</td><td>202.307</td><td>300.389</td><td>405.206</td><td>452.961</td>
+					</tr>
+					<tr>
+						<td>0.16</td><td>97.462</td><td>174.954</td><td>257.768</td><td>295.498</td>
+					</tr>
+					<tr>
+						<td>0.17</td><td>43.945</td><td>107.992</td><td>176.438</td><td>207.622</td>
+					</tr>
+					<tr>
+						<td>0.18</td><td>15.675</td><td>70.254</td><td>128.580</td><td>155.153</td>
+					</tr>
+					<tr>
+						<td>0.20</td><td>-6.537</td><td>35.585</td><td>80.601</td><td>101.110</td>
+					</tr>
+					<tr>
+						<td>0.22</td><td>-10.164</td><td>24.132</td><td>60.783</td><td>77.481</td>
+					</tr>
+					<tr>
+						<td>0.24</td><td>-7.583</td><td>21.339</td><td>52.247</td><td>66.329</td>
+					</tr>
+					<tr>
+						<td>0.26</td><td>-3.137</td><td>21.867</td><td>48.588</td><td>60.762</td>
+					</tr>
+					<tr>
+						<td>0.28</td><td>1.549</td><td>23.570</td><td>47.103</td><td>57.825</td>
+					</tr>
+					<tr>
+						<td>0.30</td><td>5.878</td><td>25.552</td><td>46.577</td><td>56.156</td>
+					</tr>
+					<tr>
+						<td>0.35</td><td>14.280</td><td>29.814</td><td>46.415</td><td>53.978</td>
+					</tr>
+					<tr>
+						<td>0.40</td><td>19.607</td><td>32.441</td><td>46.156</td><td>52.404</td>
+					</tr>
+					<tr>
+						<td>0.45</td><td>22.805</td><td>33.738</td><td>45.422</td><td>50.746</td>
+					</tr>
+					<tr>
+						<td>0.50</td><td>24.624</td><td>34.147</td><td>44.324</td><td>48.961</td>
+					</tr>
+					<tr>
+						<td>0.55</td><td>25.559</td><td>33.994</td><td>43.008</td><td>47.115</td>
+					</tr>
+					<tr>
+						<td>0.60</td><td>25.925</td><td>33.495</td><td>41.585</td><td>45.271</td>
+					</tr>
+					<tr>
+						<td>0.65</td><td>25.925</td><td>32.791</td><td>40.129</td><td>43.472</td>
+					</tr>
+					<tr>
+						<td>0.75</td><td>25.302</td><td>31.091</td><td>37.278</td><td>40.097</td>
+					</tr>
+					<tr>
+						<td>0.80</td><td>24.821</td><td>30.189</td><td>35.926</td><td>38.540</td>
+					</tr>
+					<tr>
+						<td>0.90</td><td>23.717</td><td>28.403</td><td>33.412</td><td>35.694</td>
+					</tr>
+					<tr>
+						<td>1.00</td><td>22.553</td><td>26.712</td><td>31.157</td><td>33.181</td>
+					</tr>
+					<tr>
+						<td>1.50</td><td>17.511</td><td>20.172</td><td>23.015</td><td>24.310</td>
+					</tr>
+					<tr>
+						<td>2.00</td><td>14.085</td><td>16.041</td><td>18.131</td><td>19.083</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>We are going to calculate the relevant thermodynamic information, i.e.:</p>
+			<ul class="itemslist">
+				<li>the p-v diagram and the <a href="{{ site.url }}{{ page.dir }}/binodal-curve.html">Binodal Curve</a>,</li>
+				<li>the pv-p diagram and the <a href="{{ site.url }}{{ page.dir }}/boyle-temperature.html">Boyle temperature</a>,</li>
+				<li>and the <a href="{{ site.url }}{{ page.dir }}/compress-diagram.html">Compressibility diagram</a>.</li>
+			</ul>

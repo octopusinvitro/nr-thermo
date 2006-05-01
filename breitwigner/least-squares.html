@@ -1,0 +1,183 @@
+---
+layout:  post
+title:   "Non-linear least squares fitting: Levemberg-Marquardts"
+stitle:  "Least Squares"
+date:    2005-04-26 22:10:48
+---
+
+			<p>Given a group of <strong>M</strong> pairs of experimental data 
+			<strong>(x<sub>1</sub>, y<sub>1</sub>)</strong>, 
+			<strong>(x<sub>2</sub>, y<sub>2</sub>)</strong>, ... , 
+			<strong>(x<sub>M</sub>, y<sub>M</sub>)</strong>, having to fulfill certain function, and which depend on the variable <strong>x</strong> as well as on a group of <strong>N</strong> parameters <strong>a<sub>j</sub></strong>
+			
+			<!-- LATEX: y(x)=y(x,a_1,a_2,...,a_N) -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>y</mi><mo>(</mo><mi>x</mi><mo>,</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><msub><mi>a</mi><mi>N</mi></msub><mo>)</mo></math></p>
+
+			<p>If the dependency of the <strong>a<sub>j</sub></strong> parameters is non-linear, the <strong>y(x)</strong> function is expanded by means of a Taylor series of first order around the point <strong>a<sub>j</sub><sup>0</sup></strong> (the initial values of the coefficients)
+			
+			<!-- LATEX: y(x)=y_0(x)+\sum_{j=1}^N\left[\frac{\partial y_0(x)}{\partial a_j}\delta a_j\right] -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>+</mo><munderover><mo>&#8721;</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mfenced open="[" close="]"><mrow><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>j</mi></msub></mrow></mfrac><mi>&#948;</mi><msub><mi>a</mi><mi>j</mi></msub></mrow></mfenced></math></p>
+
+			<p>where</p>
+
+			<!-- LATEX: \delta a_j=a_j-a_j^0 -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#948;</mi><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><msub><mi>a</mi><mi>j</mi></msub><mo>-</mo><msubsup><mi>a</mi><mi>j</mi><mn>0</mn></msubsup></math></p>
+
+			<p>and <strong>y<sub>j</sub></strong> represents the value of the function for <strong>a<sub>j</sub></strong>.</p>
+
+			<p>The least squares method requires to minimize the expression:</p>
+
+			<!-- LATEX: \chi^2=\sum_{i=1}^M\left[\frac1{\sigma_i^2}\left\{y_i-y_0(x_i)-\sum_{j=1}^N\frac{\partial y_0(x_i)}{\partial a_j}\delta a_j\right\}^2\right] -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>&#967;</mi><mn>2</mn></msup><mo>=</mo><munderover><mo>&#8721;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mfenced open="[" close="]"><mrow><mfrac><mn>1</mn><msubsup><mi>&#963;</mi><mi>i</mi><mn>2</mn></msubsup></mfrac><msup><mfenced open="{" close="}"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>-</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo><mo>-</mo><munderover><mo>&#8721;</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>j</mi></msub></mrow></mfrac><mi>&#948;</mi><msub><mi>a</mi><mi>j</mi></msub></mrow></mfenced><mn>2</mn></msup></mrow></mfenced></math></p>
+
+			<p>with respect to each one of the coefficients, <em>i.e.</em>:</p>
+
+			<!-- LATEX: \frac{\partial\chi^2}{\partial\delta a_k}=0\qquad\qquad k=1,...,N -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#8706;</mo><msup><mi>&#967;</mi><mn>2</mn></msup></mrow><mrow><mo>&#8706;</mo><mi>&#948;</mi><msub><mi>a</mi><mi>k</mi></msub></mrow></mfrac><mo>=</mo><mn>0</mn><mo>&#160;&#160;&#160;&#160;</mo><mo>&#160;&#160;&#160;&#160;</mo><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><mi>N</mi></math></p>
+
+			<p>which leads to the following system of equations:</p>
+
+			<!-- LATEX: \sum_{i=1}^M\sum_{j=1}^N\frac1{\sigma_i^2}\frac{\partial y_o(x_i)}{\partial a_j}\frac{\partial y_o(x_i)}{\partial a_k}\delta a_j=\sum_{i=1}^M\frac1{\sigma_i^2}\left[y_i-y_0(x_i)\right]\frac{\partial y_o(x_i)}{\partial a_k}\qquad\qquad k=1,...,N -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><munderover><mo>&#8721;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><munderover><mo>&#8721;</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mfrac><mn>1</mn><msubsup><mi>&#963;</mi><mi>i</mi><mn>2</mn></msubsup></mfrac><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mi>o</mi></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>j</mi></msub></mrow></mfrac><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mi>o</mi></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>k</mi></msub></mrow></mfrac><mi>&#948;</mi><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><munderover><mo>&#8721;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mfrac><mn>1</mn><msubsup><mi>&#963;</mi><mi>i</mi><mn>2</mn></msubsup></mfrac><mfenced open="[" close="]"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>-</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow></mfenced><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mi>o</mi></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>k</mi></msub></mrow></mfrac><mo>&#160;&#160;&#160;&#160;</mo><mo>&#160;&#160;&#160;&#160;</mo><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><mi>N</mi></math></p>
+
+			<p>which can be written in matrix notation:</p>
+
+			<!-- LATEX: \mathbf\alpha\boldsymbol\;\mathbf{δa}\boldsymbol=\mathbf\beta -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="bold">&#945;</mi><mo mathvariant="bold">&#160;</mo><mi mathvariant="bold">&#948;a</mi><mo mathvariant="bold">=</mo><mi mathvariant="bold">&#946;</mi></math></p>
+
+			<p>where:</p>
+
+			<!-- LATEX: \alpha_{jk}=\sum_{i=1}^M\left[\frac1{\sigma_i^2}\frac{\partial y_0(x_i)}{\partial a_j}\frac{\partial y_0(x_i)}{\partial a_k}\right] -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>&#945;</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><mo>=</mo><munderover><mo>&#8721;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mfenced open="[" close="]"><mrow><mfrac><mn>1</mn><msubsup><mi>&#963;</mi><mi>i</mi><mn>2</mn></msubsup></mfrac><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>j</mi></msub></mrow></mfrac><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>k</mi></msub></mrow></mfrac></mrow></mfenced></math></p>
+
+			<!-- LATEX: \alpha_{jk}=\sum_{i=1}^M\left[\frac1{\sigma_i^2}\frac{\partial y_0(x_i)}{\partial a_j}\frac{\partial y_0(x_i)}{\partial a_k}\right] -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>&#946;</mi><mi>k</mi></msub><mo>=</mo><munderover><mo>&#8721;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mfenced open="[" close="]"><mrow><mfrac><mn>1</mn><msubsup><mi>&#963;</mi><mi>i</mi><mn>2</mn></msubsup></mfrac><mfenced open="[" close="]"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>-</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow></mfenced><mfrac><mrow><mo>&#8706;</mo><msub><mi>y</mi><mn>0</mn></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><mrow><mo>&#8706;</mo><msub><mi>a</mi><mi>k</mi></msub></mrow></mfrac></mrow></mfenced></math></p>
+			
+			<p>The method of Marquardt exchanges matrix <strong>&alpha;</strong> in the previous equation by matrix <strong>&alpha;'</strong>:</p>
+
+			<!-- LATEX: \mathbf\alpha\boldsymbol'\boldsymbol\;\mathbf{δa}\boldsymbol=\mathbf\beta -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="bold">&#945;</mi><mo mathvariant="bold">'</mo><mo mathvariant="bold">&#160;</mo><mi mathvariant="bold">&#948;a</mi><mo mathvariant="bold">=</mo><mi mathvariant="bold">&#946;</mi></math></p>
+
+			<!-- LATEX: \alpha'_{jj}=\alpha_{jj}(1+\lambda) -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#945;</mi><msub><mo>'</mo><mrow><mi>j</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>&#945;</mi><mrow><mi>j</mi><mi>j</mi></mrow></msub><mo>(</mo><mn>1</mn><mo>+</mo><mi>&#955;</mi><mo>)</mo></math></p>
+
+			<!-- LATEX: \alpha'_{ij}=\alpha_{ij}\qquad\qquad(i\neq j) -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#945;</mi><msub><mo>'</mo><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><msub><mi>&#945;</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>&#160;&#160;&#160;&#160;</mo><mo>&#160;&#160;&#160;&#160;</mo><mo>(</mo><mi>i</mi><mo>&#8800;</mo><mi>j</mi><mo>)</mo></math></p>
+
+			<aside class="important">
+				<h2>Library functions (<em>Numerical Recipes</em>):</h2>
+				<dl>
+
+					<dt><strong><em>mrqmin()</em>:</strong><a id="mrqmin" class="def" href="#functions"><span class="visuallyhidden">Go to function call</span></a></dt>
+					<dd>it takes twelve arguments; 
+vectors <code>x[]</code>, <code>y[]</code> (<em>which contain the experimental points</em>), 
+<code>sig[]</code> (<em>which contains the experimental points' uncertainties</em>),
+the number of data points <code>ndata</code>,
+vectors <code>a[]</code> (<em>which contains the coefficients of the function</em>) and
+<code>ia[]</code> (<em>which contains the values "true" or "false" to fit the corresponding parameter or keep its value unchanged</em>),
+the variable <code>covar[][]</code> (<em>which is the number of arguments</em>),
+the matrices <code>covar[][]</code> (<em>used in the calculation process, where the covariance matrix is returned</em>) and
+<code>alpha[][]</code> (<em>which contains the curvature matrix &alpha;'</em>),
+the variable <code>chisq[]</code> (<em>where the value of &chi;<sup>2</sup> is returned</em>),
+the variable <code>funcs()</code> (<em>which contains the memory address of the user function</em>), and variable <code>alamda</code> (<em>which contains the &lambda; parameter of the Marquardt function</em>).</dd>
+
+					<dt><strong><em>mrqcof()</em>:</strong><a id="mrqcof" class="def" href="#functions"><span class="visuallyhidden">Go to function call</span></a></dt>
+					<dd>It's a function used by <strong><em>mrqmin()</em>:</strong> and takes as arguments the vectors <code>x[]</code>, <code>y[]</code>, <code>sig[]</code>, <code>a[]</code> and <code>ia[]</code>, the <code>alpha[]</code> matrix, the variable <code>func</code> and the vector <code>beta[]</code> (<em>which contains the values of &beta;<sub>k</sub></em>). </dd>
+
+					<dt><strong><em>func()</em>:</strong><a id="func" class="def" href="#function"><span class="visuallyhidden">Go to function call</span></a></dt>
+					<dd>The user must implement the fitting function with the following arguments:
+the <code>x</code> variable (<em>which contains the value of the abcissa x<sub>i</sub> where the function will be evaluated</em>), the vector <code>a[]</code>, the variable 
+<code>y</code> (<em>where the value of the function for x<sub>i</sub> will be returned</em>) and the vector <code>dyda[]</code> (<em>which will return the values of the derivatives with respect to each of the evaluated parameters</em>):
+
+			<!-- LATEX: \frac{\partial\sigma}{\partial\sigma_0}=\frac1{(E-E_r)^2+\frac{\gamma^2}4} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#8706;</mo><mi>&#963;</mi></mrow><mrow><mo>&#8706;</mo><msub><mi>&#963;</mi><mn>0</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mo>(</mo><mi>E</mi><mo>-</mo><msub><mi>E</mi><mi>r</mi></msub><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mfrac><msup><mi>&#947;</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow></mfrac></math></p>
+
+			<!-- LATEX: \frac{\partial\sigma}{\partial E_r}=\frac{2\sigma_0(E-E_r)}{\left[(E-E_r)^2+\frac{\gamma^2}4\right]^2} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#8706;</mo><mi>&#963;</mi></mrow><mrow><mo>&#8706;</mo><msub><mi>E</mi><mi>r</mi></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>&#963;</mi><mn>0</mn></msub><mo>(</mo><mi>E</mi><mo>-</mo><msub><mi>E</mi><mi>r</mi></msub><mo>)</mo></mrow><msup><mfenced open="[" close="]"><mrow><mo>(</mo><mi>E</mi><mo>-</mo><msub><mi>E</mi><mi>r</mi></msub><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mfrac><msup><mi>&#947;</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow></mfenced><mn>2</mn></msup></mfrac></math></p>
+
+			<!-- \frac{\partial\sigma}{\partial\gamma}=-\frac{\sigma_0\gamma}{2\left[(E-E_r)^2+\frac{\gamma^2}4\right]^2} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mo>&#8706;</mo><mi>&#963;</mi></mrow><mrow><mo>&#8706;</mo><mi>&#947;</mi></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mrow><msub><mi>&#963;</mi><mn>0</mn></msub><mi>&#947;</mi></mrow><mrow><mn>2</mn><msup><mfenced open="[" close="]"><mrow><mo>(</mo><mi>E</mi><mo>-</mo><msub><mi>E</mi><mi>r</mi></msub><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mfrac><msup><mi>&#947;</mi><mn>2</mn></msup><mn>4</mn></mfrac></mrow></mfenced><mn>2</mn></msup></mrow></mfrac></math></p></dd>
+				</dl>
+			</aside>
+
+			<p>The files for this calculation are in folder <code>breitwigner/3_Marquardt</code>. It uses the Numerical Recipes libraries mentioned above, plus <code>covsrt.c</code> and <code>gausj.c</code>.</p>
+
+			<p>The program <code>marquardt.c</code> reads the experimental data from <code>data.txt</code> and writes the results in an <code>output.txt</code> file. The format of this file is given in three columns, where the first represents the energy, the second, the cross-section measured at that energy, and the third, the uncertainties. The values are taken from the experimental data of neutron scattering cross-sections provided in <a href="{{ site.baseurl }}/{{ page.submenu }}">the main page</a>.</p>
+
+			<p>In this case we have 3 parameters, &sigma;, E<sub>r</sub> and &gamma;. We have to provide initial values for them to start the iteration, and they will be adjusted by the <code>mrqmin()</code> function. The program fits all the data points by default, with <code>ia[i] = 1</code>.</p>
+
+<pre class="line-numbers" data-start="78"><code class="language-c">	/***************************************************
+	 * Initial values for the parameter vectors
+	 * For example:
+	 *    a[1] = 70000.0;
+	 *    a[2] = 75.0;
+	 *    a[3] = 60.0;
+	 ***************************************************/
+	for (i=1; i&lt;=N; i++) {
+		printf("Enter initial value of parameter %d: ", i);
+		scanf("%lf", &amp;a[i]);
+	}
+
+	// Fit all
+	for (i=1; i&lt;=N; i++)
+		ia[i] = 1;</code></pre>
+
+<p>Once we have all the inputs, we can call the <code>mrqmin()</code> function (you may want to check <a id="functions" href="#mrqmin">the definition</a> again).</p>
+
+<pre class="line-numbers" data-start="106"><code class="language-c">	/***************************************************
+	 * ITERATION LOOP
+	 ***************************************************/
+	char answer;
+	do {
+		printf("\nHow many iterations?: ");
+		scanf("%d", &amp;k);
+
+		for(i=1; i&lt;=k; i++) {
+			iter++;
+			ochisq = chisq;
+
+			mrqmin(x, y, sig, M, a, ia, N, covar, alpha, &chisq, funcs, &alamda);
+
+			if (chisq > ochisq)
+				n=0;
+			else if (fabs(ochisq - chisq) &lt; 0.1)
+				n++;
+
+			if(n >= 4)
+				break;
+		}
+
+		if(n &lt; 4) {
+			printf("\nIterate again? (Y/N)?: ");
+			scanf("%c", &amp;answer);
+		}
+	} while (answer == 's' || answer == 'S');</code></pre>
+
+			<p>Finally, we can use the user defined function <code>func()</code> to recalculate the experimental points (<a id="function" href="#func">see <code>func()</code> definition</a> ).</p>
+
+<pre class="line-numbers" data-start="181"><code class="language-c">	printf(     "\nData points recalculated from the fit:\n");
+	fprintf(fp, "\nData points recalculated from the fit:\n");
+	for (i=1; i&lt;=M; i++) {
+
+		(*funcs)(x[i], a, &ymod[i], dyda, N);
+	
+		sum = 0.0;
+		for (j=1; j&lt;=N; j++)
+			sum += pow(dyda[j]*sqrt(covar[j][j]), 2);
+
+		printf(     "\nSigma[%d] = %3.3lf\t\tdSigma[%d] = %3.3lf", i, ymod[i], i, sqrt(sum));
+		fprintf(fp, "\nSigma[%d] = %3.3lf\t\tdSigma[%d] = %3.3lf", i, ymod[i], i, sqrt(sum));
+	}</code></pre>
+
+			<h2>Results</h2>
+
+			<p>The following values with their errors are obtained for the parameters of interest:</p>
+
+			<ul class="itemslist">
+				<li><strong>&sigma;<sub>0</sub> = 66900.3</strong></li>
+				<li><strong><em>E<sub>r</sub></em> = 77.5 MeV</strong></li> 
+				<li><strong>&gamma; = 56.2 MeV</strong></li>
+			</ul>
+
+
+			<p class="center"><img src="{{ '/img/breitWigner-marquardt.png' | prepend: site.baseurl }}" width="621" height="349" alt="Breit-Wigner curve obtained with the method of least-squares"></p>

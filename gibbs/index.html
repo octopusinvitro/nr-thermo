@@ -1,0 +1,45 @@
+---
+layout:  post
+title:   "Vapor-liquid equilibrium"
+stitle:  "The problem"
+date:    2005-06-17 14:48:28 +0100
+---
+
+			<p>The thermodynamics of phase equilibrium establish relationships between the different properties of the system that allow to describe, in a quantitative way, the state of the equilibrium between homogeneus phases that can exchange matter freely.</p>
+
+			<p>The final equilibrium compositions of each phase depend on several variables: temperature, pressure and starting compositions.</p>
+
+			<p>The figure below shows an <em>ebulliometer</em>. It is made of a vessel (D), where we introduce the dissolution that we are going to bring to the boiling point, and a refrigerator (A), in which the vapor will be condensed. We then take samples at (B) and (F) that allow to evaluate the composition of the two phases in equilibrium.</p>
+
+			<p class="center"><a href="http://commons.wikimedia.org/wiki/File%3AEbuliometer.png"><img src="//upload.wikimedia.org/wikipedia/commons/f/f2/Ebuliometer.png" width="189" height="411" alt="By Userfaf9369 (Own work) [Public domain], via Wikimedia Commons" /></a></p>
+			<p class="small">A) reflux condenser, B) dropper, C) thermometer socket, D) bulb, E) heating compartment with heating coil, F) draining valve.</p>
+
+			<p>Next, we will analyze the <strong>isothermic vapor-liquid equilibrium</strong>. We will use the following notation:</p>
+			<ul class="itemslist">
+				<li><em>x<sub>i</sub></em>: molar fraction of the component <em>i</em> in the liquid phase.</li>
+				<li><em>y<sub>i</sub></em>: molar fraction of the component <em>i</em> in the vapor phase.</li>
+				<li><em>T</em>: boiling temperature.</li>
+				<li><em>P</em>: vapor pressure of the dissolution.</li>
+				<li><em>P<sub>i</sub><sup>0</sup></em>: vapor pressure of the pure <em>i</em> component.</li>
+				<li><em>B<sub>ii</sub></em>: second coefficient of the virial of component <em>i</em>.</li>
+				<li><em>B<sub>ij</sub></em>: second coefficient of the virial of the mix.</li>
+			</ul>
+
+			<p>We'll suppose that the vapor mix can be treated as a mix of real gases whose behaviour (as well as the behaviour of each alone) can be described in an adequate way by the <strong>virial equation of state</strong>. In this case, the activity coefficients of each of the components in the vapor phase are given by:</p>
+
+			<!-- Latex: \gamma_1^\nu=\text{exp}\left[\frac{\delta_{12}y_2^2P}{RT}\right]\qquad\gamma_2^\nu=\text{exp}\left[\frac{\delta_{12}y_1^2P}{RT}\right] -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>&#947;</mi><mn>1</mn><mi>&#957;</mi></msubsup><mo>=</mo><mtext>exp</mtext><mfenced open="[" close="]"><mfrac><mrow><msub><mi>&#948;</mi><mn>12</mn></msub><msubsup><mi>y</mi><mn>2</mn><mn>2</mn></msubsup><mi>P</mi></mrow><mrow><mi>R</mi><mi>T</mi></mrow></mfrac></mfenced><mo>&#160;&#160;&#160;&#160;</mo><msubsup><mi>&#947;</mi><mn>2</mn><mi>&#957;</mi></msubsup><mo>=</mo><mtext>exp</mtext><mfenced open="[" close="]"><mfrac><mrow><msub><mi>&#948;</mi><mn>12</mn></msub><msubsup><mi>y</mi><mn>1</mn><mn>2</mn></msubsup><mi>P</mi></mrow><mrow><mi>R</mi><mi>T</mi></mrow></mfrac></mfenced></math></p>
+
+			<p>while for the liquid phase we have:</p>
+			<!-- Latex: \text{ln}\gamma_1^L=\text{ln}\frac{y_1P}{x_1P_1^0}+\frac{\left(P-P_1^0\right)\left(B_{11}-\nu_1^{0L}\right)+\delta_{12}y_2^2P}{RT} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ln</mtext><msubsup><mi>&#947;</mi><mn>1</mn><mi>L</mi></msubsup><mo>=</mo><mtext>ln</mtext><mfrac><mrow><msub><mi>y</mi><mn>1</mn></msub><mi>P</mi></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><msubsup><mi>P</mi><mn>1</mn><mn>0</mn></msubsup></mrow></mfrac><mo>+</mo><mfrac><mrow><mfenced><mrow><mi>P</mi><mo>-</mo><msubsup><mi>P</mi><mn>1</mn><mn>0</mn></msubsup></mrow></mfenced><mfenced><mrow><msub><mi>B</mi><mn>11</mn></msub><mo>-</mo><msubsup><mi>&#957;</mi><mn>1</mn><mrow><mn>0</mn><mi>L</mi></mrow></msubsup></mrow></mfenced><mo>+</mo><msub><mi>&#948;</mi><mn>12</mn></msub><msubsup><mi>y</mi><mn>2</mn><mn>2</mn></msubsup><mi>P</mi></mrow><mrow><mi>R</mi><mi>T</mi></mrow></mfrac></math></p>
+
+			<!-- Latex: \text{ln}\gamma_2^L=\text{ln}\frac{y_2P}{x_2P_2^0}+\frac{\left(P-P_2^0\right)\left(B_{22}-\nu_2^{0L}\right)+\delta_{12}y_1^2P}{RT} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ln</mtext><msubsup><mi>&#947;</mi><mn>2</mn><mi>L</mi></msubsup><mo>=</mo><mtext>ln</mtext><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mi>P</mi></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><msubsup><mi>P</mi><mn>2</mn><mn>0</mn></msubsup></mrow></mfrac><mo>+</mo><mfrac><mrow><mfenced><mrow><mi>P</mi><mo>-</mo><msubsup><mi>P</mi><mn>2</mn><mn>0</mn></msubsup></mrow></mfenced><mfenced><mrow><msub><mi>B</mi><mn>22</mn></msub><mo>-</mo><msubsup><mi>&#957;</mi><mn>2</mn><mrow><mn>0</mn><mi>L</mi></mrow></msubsup></mrow></mfenced><mo>+</mo><msub><mi>&#948;</mi><mn>12</mn></msub><msubsup><mi>y</mi><mn>1</mn><mn>2</mn></msubsup><mi>P</mi></mrow><mrow><mi>R</mi><mi>T</mi></mrow></mfrac></math></p>
+
+			<p>where:</p>
+			<!-- Latex: \delta_{12}=2B_{12}-B_{11}-B_{22} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>&#948;</mi><mn>12</mn></msub><mo>=</mo><mn>2</mn><msub><mi>B</mi><mn>12</mn></msub><mo>-</mo><msub><mi>B</mi><mn>11</mn></msub><mo>-</mo><msub><mi>B</mi><mn>22</mn></msub></math></p>
+
+
+

@@ -1,0 +1,161 @@
+---
+layout:  post
+title:   "Calculation of the excess Gibbs potential from isothermic vapor-liquid equilibrium data"
+stitle:  "Gibbs potential"
+date:    2005-06-18 15:41:18 +0100
+---
+
+			<p>Taking into account the relationship between the chemical excess potential and the activity coefficient in the liquid phase:</p>
+			<!-- Latex: \mu_i^E=RT\ln\gamma_i^L -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><msub><mi>&#956;</mi><mi>i</mi></msub><mi>E</mi></msup><mo>=</mo><mi>R</mi><mi>T</mi><mi>ln</mi><msup><msub><mi>&#947;</mi><mi>i</mi></msub><mi>L</mi></msup></math></p>
+
+			<p>we obtain:</p>
+			<!-- Latex: \mu_1^E=RT\text{ln}\frac{y_1P}{x_1P_1^0}+\left(P-P_1^0\right)\left(B_{11}-\nu_1^{0L}\right)+\delta_{12}y_2^2P-->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>&#956;</mi><mn>1</mn><mi>E</mi></msubsup><mo>=</mo><mi>R</mi><mi>T</mi><mtext>ln</mtext><mfrac><mrow><msub><mi>y</mi><mn>1</mn></msub><mi>P</mi></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><msubsup><mi>P</mi><mn>1</mn><mn>0</mn></msubsup></mrow></mfrac><mo>+</mo><mfenced><mrow><mi>P</mi><mo>-</mo><msubsup><mi>P</mi><mn>1</mn><mn>0</mn></msubsup></mrow></mfenced><mfenced><mrow><msub><mi>B</mi><mn>11</mn></msub><mo>-</mo><msubsup><mi>&#957;</mi><mn>1</mn><mrow><mn>0</mn><mi>L</mi></mrow></msubsup></mrow></mfenced><mo>+</mo><msub><mi>&#948;</mi><mn>12</mn></msub><msubsup><mi>y</mi><mn>2</mn><mn>2</mn></msubsup><mi>P</mi></math></p>
+
+			<!-- Latex: \mu_2^E=RT\text{ln}\frac{y_2P}{x_2P_2^0}+\left(P-P_2^0\right)\left(B_{22}-\nu_2^{0L}\right)+\delta_{12}y_1^2P-->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msubsup><mi>&#956;</mi><mn>2</mn><mi>E</mi></msubsup><mo>=</mo><mi>R</mi><mi>T</mi><mtext>ln</mtext><mfrac><mrow><msub><mi>y</mi><mn>2</mn></msub><mi>P</mi></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><msubsup><mi>P</mi><mn>2</mn><mn>0</mn></msubsup></mrow></mfrac><mo>+</mo><mfenced><mrow><mi>P</mi><mo>-</mo><msubsup><mi>P</mi><mn>2</mn><mn>0</mn></msubsup></mrow></mfenced><mfenced><mrow><msub><mi>B</mi><mn>22</mn></msub><mo>-</mo><msubsup><mi>&#957;</mi><mn>2</mn><mrow><mn>0</mn><mi>L</mi></mrow></msubsup></mrow></mfenced><mo>+</mo><msub><mi>&#948;</mi><mn>12</mn></msub><msubsup><mi>y</mi><mn>1</mn><mn>2</mn></msubsup><mi>P</mi></math></p>
+
+			<p>and so,</p>
+			<!-- Latex: g^E=x_1\mu_1^E+x_2\mu_2^E -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>g</mi><mi>E</mi></msup><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msubsup><mi>&#956;</mi><mn>1</mn><mi>E</mi></msubsup><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msubsup><mi>&#956;</mi><mn>2</mn><mi>E</mi></msubsup></math></p>
+
+			<h2>Application</h2>
+			<p>We are going to study the system 1.3-dioxolane + hexane at 308.15 K (Calvo, E.; <em>J. Chem. Eng. Data</em> 1999, 44, 193-196)</p>
+
+			<table summary="Experimental data of vapor pressure and molar fractions in the vapor and liquid phases of the system (1) 1.3-dioxolane + (2) hexane at 308.15 K">
+				<caption><strong>Table 1:</strong> Experimental data of vapor pressure and molar fractions in the vapor and liquid phases of the system (1) 1.3-dioxolane + (2) hexane at 308.15 K</caption>
+				<thead>
+					<tr>
+						<th>x<sub>1</sub></th>
+						<th>y<sub>1</sub></th>
+						<th>P/kPa</th>
+						<th>x<sub>1</sub></th>
+						<th>y<sub>1</sub></th>
+						<th>P/kPa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0.0912</td><td>0.1916</td><td>35.031</td><td>0.7646</td><td>0.5101</td><td>36.895</td>
+					</tr>
+					<tr>
+						<td>0.2073</td><td>0.3106</td><td>37.699</td><td>0.8098</td><td>0.5311</td><td>36.096</td>
+					</tr>
+					<tr>
+						<td>0.3156</td><td>0.3739</td><td>38.644</td><td>0.8245</td><td>0.5446</td><td>35.694</td>
+					</tr>
+					<tr>
+						<td>0.4000</td><td>0.4059</td><td>38.861</td><td>0.8419</td><td>0.5522</td><td>35.223</td>
+					</tr>
+					<tr>
+						<td>0.4694</td><td>0.4268</td><td>38.789</td><td>0.8703</td><td>0.5772</td><td>34.143</td>
+					</tr>
+					<tr>
+						<td>0.5545</td><td>0.4507</td><td>38.530</td><td>0.8879</td><td>0.5956</td><td>33.349</td>
+					</tr>
+					<tr>
+						<td>0.5915</td><td>0.4594</td><td>38.345</td><td>0.9597</td><td>0.7552</td><td>27.689</td>
+					</tr>
+					<tr>
+						<td>0.6418</td><td>0.4718</td><td>38.051</td><td>0.9720</td><td>0.8460</td><td>26.156</td>
+					</tr>
+					<tr>
+						<td>0.6618</td><td>0.4777</td><td>38.023</td><td>0.9874</td><td>0.8958</td><td>23.740</td>
+					</tr>
+					<tr>
+						<td>0.7226</td><td>0.4950</td><td>37.450</td><td></td><td></td><td></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p></p>
+
+			<table summary="Experimental data of molar volumes and vapor pressures of the pure components at 308.15 K">
+				<caption><strong>Table 2:</strong> Experimental data of molar volumes and vapor pressures of the pure components at 308.15 K</caption>
+				<thead>
+					<tr>
+						<th>v<sup>0</sup><sub>1</sub> [cm<sup>3</sup>mol<sup>-1</sup>]</th>
+						<th>v<sup>0</sup><sub>2</sub> [cm<sup>3</sup>mol<sup>-1</sup>]</th>
+						<th>P<sup>0</sup><sub>1</sub> [kPa]</th>
+						<th>P<sup>0</sup><sub>2</sub> [kPa]</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>71</td><td>132</td><td>21.457</td><td>30.636</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p></p>
+
+			<table summary="Virial coefficients of the pure components and the mix at 308.15 K">
+				<caption><strong>Table 3:</strong> Virial coefficients of the pure components and the mix at 308.15 K</caption>
+				<thead>
+					<tr>
+						<th>B<sub>11</sub> [cm<sup>3</sup>mol<sup>-1</sup>]</th>
+						<th>B<sub>22</sub> [cm<sup>3</sup>mol<sup>-1</sup>]</th>
+						<th>B<sub>12</sub> [cm<sup>3</sup>mol<sup>-1</sup>]</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-1439</td><td>-1726</td><td>-1396</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>Results</h2>
+
+			<table summary="Virial coefficients of the pure components and the mix at 308.15 K">
+				<caption><strong>Table 3:</strong> Virial coefficients of the pure components and the mix at 308.15 K</caption>
+				<thead>
+					<tr>
+						<th>x<sub>1</sub></th>
+						<th>&mu;<sup>E</sup><sub>1</sub><br> [J mol<sup>-1</sup>]</th>
+						<th>&mu;<sup>E</sup><sub>2</sub><br> [J mol<sup>-1</sup>]</th>
+						<th>g<sup>E</sup><br> [J mol<sup>-1</sup>]</th>
+						<th>x<sub>1</sub></th>
+						<th>&mu;<sup>E</sup><sub>1</sub><br> [J mol<sup>-1</sup>]</th>
+						<th>&mu;<sup>E</sup><sub>2</sub><br> [J mol<sup>-1</sup>]</th>
+						<th>g<sup>E</sup><br> [J mol<sup>-1</sup>]</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0.0912</td><td>3145.8</td><td>35.8</td><td>319.5</td><td>0.7646</td><td>331.7</td><td>2345.9</td><td>805.8</td>
+					</tr>
+					<tr>
+						<td>0.2073</td><td>2461.9</td><td>162.0</td><td>638.8</td><td>0.8098</td><td>232.7</td><td>2725.5</td><td>706.8</td>
+					</tr>
+					<tr>
+						<td>0.3156</td><td>1921.3</td><td>354.0</td><td>848.6</td><td>0.8245</td><td>222.6</td><td>2829.0</td><td>680.0</td>
+					</tr>
+					<tr>
+						<td>0.4000</td><td>1538.0</td><td>571.1</td><td>957.8</td><td>0.8419</td><td>171.2</td><td>3020.2</td><td>621.6</td>
+					</tr>
+					<tr>
+						<td>0.4694</td><td>1251.7</td><td>789.9</td><td>1006.7</td><td>0.8703</td><td>121.1</td><td>3302.8</td><td>533.8</td>
+					</tr>
+					<tr>
+						<td>0.5545</td><td>947.3</td><td>1112.2</td><td>1020.8</td><td>0.8879</td><td>90.9</td><td>3503.8</td><td>473.5</td>
+					</tr>
+					<tr>
+						<td>0.5915</td><td>818.6</td><td>1281.6</td><td>1007.7</td><td>0.9597</td><td>30.5</td><td>4374.3</td><td>205.6</td>
+					</tr>
+					<tr>
+						<td>0.6418</td><td>658.2</td><td>1539.7</td><td>974.0</td><td>0.9720</td><td>16.4</td><td>4587.1</td><td>144.4</td>
+					</tr>
+					<tr>
+						<td>0.6618</td><td>609.5</td><td>1656.4</td><td>963.6</td><td>0.9874</td><td>6.3</td><td>4779.0</td><td>66.4</td>
+					</tr>
+					<tr>
+						<td>0.7226</td><td>437.3</td><td>2040.3</td><td>882.0</td><td></td><td></td><td></td><td></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p class="center"><img src="{{ '/img/gibbs-potential1.png' | prepend: site.baseurl }}" width="529" height="452" alt="Boiling curve"></p>
+
+			<p class="center"><img src="{{ '/img/gibbs-potential2.png' | prepend: site.baseurl }}" width="1322" height="803" alt="Gibbs potential"></p>

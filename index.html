@@ -1,0 +1,34 @@
+---
+layout: default
+---
+				<h1>Introduction</h1>
+				<p>This is a bunch of old C programs based on the good ol' <strong>Numerical Recipes</strong> (<a href="http://www.nr.com">http://www.nr.com</a>).</p>
+				<p>There are three computational physics problems proposed:</p>
+				<ul class="itemslist">
+					<li><strong>Folder <code>breitwigner</code>:</strong> Solving the Breit-Wigner formula, actually a Nuclear Physics problem.
+					<li><strong>Folder <code>pbdiagrams</code>:</strong> Pressure-Volume (PV) diagrams and the *van der Waals* equation.
+					<li><strong>Folder <code>gibbs</code>:</strong> Vapor-liquid equilibrium and calculation of the excess Gibbs potential.
+				</ul>
+
+				<p class="inlinesvg">You can find the code at {% include github.svg %} <a href="{{ site.git_url }}/{{ site.git_username }}/{{ site.git_repo }}">GitHub</a>, {% include bitbucket.svg %} <a href="https://bitbucket.com/{{ site.git_username }}/{{ site.git_repo }}">BitBucket</a>, and {% include gitlab.svg %} <a href="https://gitlab.com/{{ site.git_username }}/{{ site.git_repo }}">GitLab</a>.</p>
+				<p>The <strong>Numerical Recipes</strong> libraries used for this calculations are stored in the folder <code>nr</code>, but you can also install them in your system and load them normally, if you prefer. Check the NR documentation to learn more about it.</p>
+				<p>The libraries in the <code>nr</code> folder used for these computational physics problems are NOT included due to <a href="http://www.nr.com/licenses/redistribute.html">license restrictions</a>. The snippets might not work without them.</p>
+
+				<p>Vectors' components start in <strong>1</strong> and not in <strong>0</strong>. <strong>Example:</strong></p>
+				<pre><code class="language-c">for (i=1; i&lt;=N; i++) {
+	printf("Enter initial value of parameter %d: ", i);
+	scanf("%lf", &amp;a[i]);
+}</code></pre>
+
+
+				<h2>Compiling and running</h2>
+
+				<h3>Compile</h3>
+				<p>C programs:</p>
+				<pre><code class="language-bash" style="white-space: pre-wrap;">$ gcc filename.c -o filename -lm</code></pre>
+
+				<p>C++ programs:</p>
+				<pre><code class="language-bash" style="white-space: pre-wrap;">$ g++ filename.cpp -o filename</code></pre>
+
+				<h3>Run</h3>
+				<pre><code class="language-bash" style="white-space: pre-wrap;">$ ./filename</code></pre>

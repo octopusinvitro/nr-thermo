@@ -1,0 +1,48 @@
+---
+layout:  post
+title:   "Analysis of a Breit-Wigner spectrum"
+stitle:  "The problem"
+date:    2005-03-20 18:36:00
+---
+
+			<p>In the following table you can see experimental data of the cross section as a function of energy for neutron scattering:</p>
+
+			<table>
+				<caption>Experimental data of neutron scattering cross-sections, where mb = milibarn and 1 barn = 10<sup>-28</sup>m<sup>2</sup></caption>
+
+				<tr>
+					<th scope="row">E (MeV)</th>
+					<td >0</td>
+					<td >25</td>
+					<td >50</td>
+					<td >75</td>
+					<td >100</td>
+					<td >125</td>
+					<td >150</td>
+					<td >175</td>
+					<td >200</td>
+				</tr>
+				<tr>
+					<th scope="row">&sigma; (mb)</th>
+					<td >10.6</td>
+					<td >16.0</td>
+					<td >45.0</td>
+					<td >83.5</td>
+					<td >52.8</td>
+					<td >19.9</td>
+					<td >10.8</td>
+					<td >8.25</td>
+					<td >4.7</td>
+				</tr>
+			</table>
+			
+			<p>The cross-section as a function of energy can be described as the Breit-Wigner function:</p>
+			
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>&#963;</mi><mo>=</mo><mfrac><msub><mi>&#963;</mi><mn>0</mn></msub><mrow><mo>(</mo><mi>E</mi><mo>-</mo><msub><mi>E</mi><mi>r</mi></msub><msup><mo>)</mo><mn>2</mn></msup><mo>+</mo><mstyle displaystyle="true"><mfrac><msup><mi>&#947;</mi><mn>2</mn></msup><mn>4</mn></mfrac></mstyle></mrow></mfrac></math></p>
+			
+			<p class="center"><img src="{{ '/img/breitWigner.png' | prepend: site.baseurl }}" width="588" height="510" alt="Breit-Wigner curve"></p>
+			
+			<p>where E<sub>r</sub> is the resonance energy (<em>position of the maximum</em>), and &gamma; the width at half-maximum height.</p>
+
+			<p><strong>Objective:</strong> to determine the values of E<sub>r</sub> and &gamma; from the experimental data. Here, three possible methods are shown: <a href="{{ site.url }}{{ page.dir }}/lagrange-interpolators.html">Lagrange Interpolators</a>, <a href="{{ site.url }}{{ page.dir }}/cubic-splines.html">Cubic Splines</a> and <a href="{{ site.url }}{{ page.dir }}/least-squares.html">Least Squares</a>.</p>
+

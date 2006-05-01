@@ -1,0 +1,24 @@
+# Site settings
+title:       Numerical Recipes applied to Thermodynamics
+description: > # this means to ignore newlines until "baseurl:"
+  Numerical Recipes applied to solving Thermodynamics problems.
+baseurl:     "" # the subpath of your site, e.g. /blog/
+url:         "http://nrthermo.tk" # the base hostname & protocol for your site
+
+# User names
+twitter_username: _mestevens
+git_username:  me-stevens
+git_url:       https://github.com
+git_repo:      nr-thermo
+
+# Build settings
+exclude:  [.gitignore, exclude]
+markdown: kramdown
+sass:
+  style: compressed
+
+# VARIABLES
+categories:
+  "breitwigner": "Breit-Wigner"
+  "pvdiagrams":  "PV-Diagrams"
+  "gibbs":       "Gibbs"

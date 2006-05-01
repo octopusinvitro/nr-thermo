@@ -1,0 +1,101 @@
+---
+layout:  post
+title:   "Method of the Lagrange interpolators"
+stitle:  "L. Inter-polators"
+date:    2005-04-03 18:36:00
+---
+
+			<p>Given a group of <strong>N</strong> pairs of experimental data 
+			<strong>(x<sub>1</sub>, y<sub>1</sub>)</strong>, 
+			<strong>(x<sub>2</sub>, y<sub>2</sub>)</strong>, ... , 
+			<strong>(x<sub>N</sub>, y<sub>N</sub>)</strong>, we want to obtain the  values <strong>(x, y)</strong> interpolated from the experimental values using the Lagrange polynomial of grade <strong>N-1</strong>:
+			
+			<!-- LATEX: y=\frac{(x-x_2)(x-x_3)\dots(x-x_N)}{(x_1-x_2)(x_1-x_3)\dots(x_1-x_N)}y_1+\frac{(x-x_1)(x-x_3)\dots(x-x_N)}{(x_2-x_1)(x_2-x_3)\dots(x_2-x_N)}y_2+\dots\frac{(x-x_1)(x-x_2)\dots(x-x_{N-1})}{(x_N-x_1)(x_N-x_2)\dots(x_N-x_{N-1})}y_N -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>3</mn></msub><mo>)</mo><mo>&#8230;</mo><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mi>N</mi></msub><mo>)</mo></mrow><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mn>3</mn></msub><mo>)</mo><mo>&#8230;</mo><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>-</mo><msub><mi>x</mi><mi>N</mi></msub><mo>)</mo></mrow></mfrac><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>3</mn></msub><mo>)</mo><mo>&#8230;</mo><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mi>N</mi></msub><mo>)</mo></mrow><mrow><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mn>3</mn></msub><mo>)</mo><mo>&#8230;</mo><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>-</mo><msub><mi>x</mi><mi>N</mi></msub><mo>)</mo></mrow></mfrac><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mo>&#8230;</mo><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>&#8230;</mo><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mrow><mi>N</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow><mrow><mo>(</mo><msub><mi>x</mi><mi>N</mi></msub><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>(</mo><msub><mi>x</mi><mi>N</mi></msub><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>&#8230;</mo><mo>(</mo><msub><mi>x</mi><mi>N</mi></msub><mo>-</mo><msub><mi>x</mi><mrow><mi>N</mi><mo>-</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mfrac><msub><mi>y</mi><mi>N</mi></msub></math></p>
+			
+			<!-- LATEX: y=\sum_{k=1}^N\prod_{\begin{array}{c}j=1\\j\neq k\end{array}}^N\frac{(x-x_j)}{(x_k-x_j)}y_k -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi><mo>=</mo><munderover><mo>&#8721;</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><munderover><mo>&#8719;</mo><mtable><mtr><mtd><mi>j</mi><mo>=</mo><mn>1</mn></mtd></mtr><mtr><mtd><mi>j</mi><mo>&#8800;</mo><mi>k</mi></mtd></mtr></mtable><mi>N</mi></munderover><mfrac><mrow><mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mi>j</mi></msub><mo>)</mo></mrow><mrow><mo>(</mo><msub><mi>x</mi><mi>k</mi></msub><mo>-</mo><msub><mi>x</mi><mi>j</mi></msub><mo>)</mo></mrow></mfrac><msub><mi>y</mi><mi>k</mi></msub></math></p>
+
+			<p>The formula was <a href="http://en.wikipedia.org/wiki/Lagrange_polynomial">first published by Waring</a> (1779), rediscovered by Euler in 1783, and published by Lagrange in 1795 (Jeffreys and Jeffreys 1988).</p>
+
+			<aside class="important">
+				<h2>Library functions (<em>Numerical Recipes</em>):</h2>
+				<dl>
+					<dt><strong><em>polint()</em>:</strong><a id="polint" class="def" href="#function"><span class="visuallyhidden">Go to function call</span></a></dt>
+					<dd>it takes five arguments; vectors <code>xa[]</code>, <code>ya[]</code> (<em>which contain the experimental data x<sub>i</sub>, y<sub>i</sub></em> respectively</em>), the number of data points <code>n</code>, the variable <code>x</code> (<em>which is the abscissa for which we want to interpolate</em>), the variable <code>y</code> (<em>used to return the  the interpolated value</em>), and variable <code>dy</code> (<em>which stores the error of the interpolation</em>).
+</dd>
+				</dl>
+			</aside>
+
+			<p>The files for this calculation are in folder <code>breitwigner/1_Lagrange</code>. It uses the Numerical Recipes libraries and <code>polint.c</code>.</p>
+
+			<p>The program <code>lagrange.c</code> reads the experimental data from <code>data.txt</code>. The format of this file is given in two columns, where the first represents the energy, and the second, the cross-section measured at that energy. The values are taken from the experimental data of neutron scattering cross-sections provided in <a href="{{ site.url }}{{ page.dir }}">the main page</a>.</p>
+
+			<p>Then, a call is made to the <code>polint.c</code> routine to make the interpolation in an interval fabricated in execution time. To generate the interval, the program asks for a minimum and maximum value. Ideally, those values should be around the peak of the resonance, so that we can have more points in that region where the curve changes the most. Looking at the figure in <a href="{{ site.url }}/{{ page.dir }}">the main page</a>, the peak is around <em>E</em> = 75 MeV, so good limit values could be <strong><em>E<sub>min</sub></em> = 70.1 MeV</strong> and <strong><em>E<sub>max</sub></em> =79.9 MeV</strong>.</p>
+
+			<p>To choose the step size, we need to keep in mind that when constructing interpolating polynomials, there is a trade-off between having a better fit and having a smooth well-behaved fitting function. The more data points that are used in the interpolation, the higher the degree of the resulting polynomial, and therefore the greater oscillation it will exhibit between the data points. Therefore, a high-degree interpolation may be a poor predictor of the function between points, although the accuracy at the data points will be "perfect". In this case, taking into account the limit values previously choosen, a good step size could be <strong>0.5</strong>.</p>
+
+<p>Once we have all the inputs, we can call the interpolating function (you may want to check <a id="function" href="#polint">the definition</a> again).</p>
+
+<pre class="line-numbers" data-start="123"><code class="language-c">	/***************************************************
+	 * Creating the interpolation interval
+	 ***************************************************/
+	printf(" Lower limit Emin of the interpolation interval: ");
+	scanf("%lf", &amp;jmin);	
+	printf(" Upper limit Emax of the interpolation interval: ");
+	scanf("%lf", &amp;jmax);
+	printf(" Step size: ");
+	scanf("%lf", &amp;dx);
+	
+	fprintf(fp,"\n Lower limit Emin of the interpolation interval: Emin = %3.3lf", jmin);
+	fprintf(fp,"\n Upper limit Emax of the interpolation interval: Emax = %3.3lf", jmax);
+	fprintf(fp,"\n Step size: dE = %lf", dx);
+		
+	n  = (int)( (jmax - jmin) / dx) + 2;	
+	x  = dvector(1,n);
+	y  = dvector(1,n);
+	dy = dvector(1,n);
+	getchar();
+	
+	for (i=1, j=jmin; i&lt;=n-1, j&lt;jmax; i++, j=j+dx)
+		x[i] = j;
+	x[n] = jmax;</code></pre>
+
+
+<pre class="line-numbers" data-start="160"><code class="language-c">	/***************************************************
+	 * Calling the interpolation function
+	 ***************************************************/
+	for (i=1; i&lt;=n; i++)
+		polint(xa, ya, N, x[i], &amp;y[i], &amp;dy[i]);</code></pre>
+
+			<p>Once we have obtained the interpolated values of the cross-section with their errors from the generated energies, we can calculate the typical properties of the Breit-Wigner resonance, and their errors:</p>
+
+			<ul class="itemslist">
+				<li>The cross-section at energy = 0, <strong>&sigma;<sub>0</sub></strong> (<code>So</code>),</li>
+				<li>the resonance energy <strong><em>E<sub>r</sub></em></strong> which is the energy at the maximum of the curve (<code>x[m]</code>), and</li>
+				<li>the resonance width or full width at half maximum (FWHM) represented by <strong>&gamma;</strong> (<code>gamma</code>).</li>
+			</ul>
+			<p>(See figure in <a href="{{ site.url }}{{ page.dir }}">the problem's page</a>)</p>
+
+<pre class="line-numbers" data-start="176"><code class="language-c">	m      = maximum (y, n);
+	gamma  = 2.0*x[m] / sqrt( (y[m]/ya[1]) - 1.0);
+	dgamma = ( gamma / 2*(1.0 - (ya[1]/y[m])) ) * sqrt(pow(0.1/ya[1],2) + pow(dy[m]/y[m], 2));
+	So     = y[m]*pow(gamma,2) / 4.0;
+	dSo    = So*sqrt(pow(dgamma/gamma, 2) + pow(2.0*dy[m] / y[m],2));</code></pre>
+
+			<p>Finally, the results of the calculation are dumped into an <code>output.txt</code> file.</p>
+
+
+			<h2>Results</h2>
+
+			<p>As stated previously, looking at the figure, the maximum seemed to be around <em>E</em> = 75 MeV. With the calculation, a value of <strong><em>E<sub>r</sub></em> = 74.60 MeV</strong> with an error of 0.04 MeV is obtained.</p>
+
+			<p>For gamma we obtain a value of <strong>&gamma;</em> = 56.9 MeV</strong> with an error of 0.2  MeV.</p>
+
+			<p>The region of the curve where there is more variation is the peak, that's why we take more points there. Repeat the calculation adding points for the rest of the curve.</p>
+
+			<p class="center"><img src="{{ '/img/breitWigner-lagrange1.png' | prepend: site.baseurl }}" width="621" height="349" alt="Breit-Wigner curve obtained with Lagrange interpolators"></p>
+			<p class="center small">The peak is the region of higher variation of the curve.</p>
+
+			<p class="center"><img src="{{ '/img/breitWigner-lagrange2.png' | prepend: site.baseurl }}" width="622" height="350" alt="Breit-Wigner curve obtained with Lagrange interpolators. Zoom in"></p>
+			<p class="center small">Zoom in of the previous plot.</p>

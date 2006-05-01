@@ -1,0 +1,55 @@
+---
+layout:  post
+title:   "Binodal curve"
+stitle:  "Binodal curve"
+date:    2005-05-01 04:05:30
+---
+
+			<p>The equation of the real gas can be rewritten like:</p>
+
+			<!-- Latex: pv^3-\left(pb+T\right)v^2+av-ab=0-->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>p</mi><msup><mi>v</mi><mn>3</mn></msup><mo>-</mo><mfenced><mrow><mi>p</mi><mi>b</mi><mo>+</mo><mi>T</mi></mrow></mfenced><msup><mi>v</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>v</mi><mo>-</mo><mi>a</mi><mi>b</mi><mo>=</mo><mn>0</mn></math></p>
+
+			<p>This third grade polynomial provides the values of the volume at a given temperature and pressure.</p>
+			<p>To obtain the binodal curve, a temperature <strong>T</strong> is fixed, and the pressure value <strong>p<sub>0</sub></strong> is calculated so that areas 1 and 2 are equal in absolute value:</p>
+
+			<p class="center"><img src="{{ "/img/pvDiagrams-binodal.png" | prepend: site.baseurl }}" width="500" height="402" alt="Binodal curve"></p>
+
+			<p>In other words:</p>
+
+			<!-- Latex: \begin{array}{lc}
+Area
+&=\left|Area_1\right|-\left|Area_2\right|\\
+&=T\ln\frac{v_3-b}{v_1-b}+a\left(\frac1{v_3}-\frac1{v_1}\right)-p_0\left(v_3-v_1\right)\\
+&=0\end{array} -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtable columnalign="left"><mtr><mtd><mi>A</mi><mi>r</mi><mi>e</mi><mi>a</mi></mtd><mtd><mo>=</mo><mfenced open="|" close="|"><mrow><mi>A</mi><mi>r</mi><mi>e</mi><msub><mi>a</mi><mn>1</mn></msub></mrow></mfenced><mo>-</mo><mfenced open="|" close="|"><mrow><mi>A</mi><mi>r</mi><mi>e</mi><msub><mi>a</mi><mn>2</mn></msub></mrow></mfenced></mtd></mtr><mtr><mtd/><mtd><mo>=</mo><mi>T</mi><mi>ln</mi><mfrac><mrow><msub><mi>v</mi><mn>3</mn></msub><mo>-</mo><mi>b</mi></mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>-</mo><mi>b</mi></mrow></mfrac><mo>+</mo><mi>a</mi><mfenced><mrow><mfrac><mn>1</mn><msub><mi>v</mi><mn>3</mn></msub></mfrac><mo>-</mo><mfrac><mn>1</mn><msub><mi>v</mi><mn>1</mn></msub></mfrac></mrow></mfenced><mo>-</mo><msub><mi>p</mi><mn>0</mn></msub><mfenced><mrow><msub><mi>v</mi><mn>3</mn></msub><mo>-</mo><msub><mi>v</mi><mn>1</mn></msub></mrow></mfenced></mtd></mtr><mtr><mtd/><mtd><mo>=</mo><mn>0</mn></mtd></mtr></mtable></math></p>
+
+			<p>The value of pressure given by <strong>p<sub>0</sub></strong> determines the values <strong>v<sub>1</sub></strong> and <strong>v<sub>3</sub></strong> of the binodal curve.</p>
+
+			<h2>The method of Brent</h2>
+			<p>It's an adequate method to find the solution of a non-linear equation like the one to calculate the area.</p>
+			<aside class="important">
+				<h2>Library functions (<em>Numerical Recipes</em>):</h2>
+				<dl>
+					<dt><strong><em>zbrac()</em>:</strong></dt>
+					<dd>given a function <strong><em>f(x) = 0</em></strong> and an initial interval (x<sub>1</sub>, x<sub>2</sub>), the routine expands the interval up until it contains the solution. Its arguments are the pointer to the function and the pointers to the variables <code>x1</code> and <code>x2</code>.</dd>
+
+					<dt><strong><em>zbrent()</em>:</strong></dt>
+					<dd>uses the method of Brent to find the solution to a non-linear function <strong><em>f(x) = 0</em></strong>, knowing that said solution is in the interval (x<sub>1</sub>, x<sub>2</sub>). Its arguments are the pointer to the function, the variables <code>x1</code> and <code>x2</code>, and the desired precision of the calculation.</dd>
+
+					<dt><strong><em>zrhqr()</em>:</strong></dt>
+					<dd>obtains the roots of a polynomial with real coefficients using the method of the eigenvalues. Its arguments are the vector <code>a[]</code> (<em>which contains the coefficients of the polynomial</em>), the dimension of the vector <code>M</code> and the complex vector <code>rt[]</code> (<em>which contains the real and imaginary solutions</em>).</dd>
+				</dl>
+			</aside>
+
+			<p>Function <code>zrhqr()</code> also calls for other two NR routines, <code>balanc.c</code> and <code>hqr.c</code>. The real solutions are saved in <code>rtr[]</code> and the imaginary ones in <code>rti[]</code>.
+
+			<aside class="important">
+				<h2>User functions:</h2>
+				<dl>
+					<dt><strong><em>fx()</em>:</strong></dt>
+					<dd>the user must implement a function that calculates the total area limited by the isotherm and the line <strong>p<sub>0</sub> = cte</strong>. It must take as argument the variable <code>p0</code>. The function must return the value of the area.</dd>
+				</dl>
+			</aside>
+			
+			<p>The files for this calculation are in folder <code>pvdiagrams/2_binodal/</code>. For temperatures of 415, 460 and 508.1 K, the values of p<sub>0</sub> are 25.961, 34.153 and 46.422, respectively. At 530 K we are on the ideal region, above critical p.</p>

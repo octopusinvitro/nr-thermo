@@ -1,0 +1,20 @@
+---
+layout:    default
+permalink: /forkit/
+---
+			<div class="footer-col" style="width:100%;margin-bottom:5em;">
+
+				<ul class="submenu">{% if site.git_username %}
+					<li>
+{% include github.svg %}							<a href="{{ site.git_url }}/{{ site.git_username }}/{{ site.git_repo }}">GitHub</a>
+					</li>
+
+					<li>
+{% include bitbucket.svg %}							<a href="https://bitbucket.com/{{ site.git_username }}/{{ site.git_repo }}">BitBucket</a>
+					</li>
+
+					<li>
+{% include gitlab.svg %}							<a href="https://gitlab.com/{{ site.git_username }}/{{ site.git_repo }}">GitLab</a>
+					</li>{% endif %}
+				</ul>
+			</div>

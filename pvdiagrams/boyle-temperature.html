@@ -1,0 +1,75 @@
+---
+layout:  post
+title:   "PV-P diagram and the Boyle temperature"
+stitle:  "Boyle temp."
+date:    2005-05-22 18:36:00
+---
+
+			<p>If we define <em>y = pv </em> and use the equation of the real gases, we obtain:</p>
+
+			<!-- Latex: y^3-\left(bp+RT\right)y^2+apy-abp^2=0 -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>y</mi><mn>3</mn></msup><mo>-</mo><mfenced><mrow><mi>b</mi><mi>p</mi><mo>+</mo><mi>R</mi><mi>T</mi></mrow></mfenced><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><mi>p</mi><mi>y</mi><mo>-</mo><mi>a</mi><mi>b</mi><msup><mi>p</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></math></p>
+
+			<p>which will allow us to obtain the pv-p curves for a given temperature. The equation:</p>
+
+			<!-- Latex: by^2-ay+2ap=0 -->
+			<p class="center"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi><msup><mi>y</mi><mn>2</mn></msup><mo>-</mo><mi>a</mi><mi>y</mi><mo>+</mo><mn>2</mn><mi>a</mi><mi>p</mi><mo>=</mo><mn>0</mn></math></p>
+
+			<p>corresponds to the curve that connects the minimum values of the pv-p curve.</p>
+
+			<aside class="important">
+				<h2>Library functions (<em>Numerical Recipes</em>):</h2>
+				<dl>
+					<dt><strong><em>zrhqr()</em>:</strong></dt>
+					<dd>obtains the roots of a polynomial with real coefficients using the method of the eigenvalues. Its arguments are the vector <code>a[]</code> (<em>which contains the coefficients of the polynomial</em>), the complex vector <code>rt[]</code> (<em>which contains the real and imaginary solutions</em>).</dd>
+				</dl>
+			</aside>
+
+			<p>The files for this calculation are in folder <code>pvdiagrams/3_boyle/</code>. 
+
+			<table summary="Minima of the pvp-p curves.">
+				<caption>Minima of the pvp-p curves.</caption>
+				<thead>
+					<tr>
+						<th>pmin [atm]</th>
+						<th>pvmin [atmL/mol]</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>-10.164</td><td>2.236</td>
+					</tr>
+					<tr>
+						<td>21.339</td><td>5.121</td>
+					</tr>
+					<tr>
+						<td>52.254</td><td>12.541</td>
+					</tr>
+					<tr>
+						<td>60.762</td><td>15.798</td>
+					</tr>
+					<tr>
+						<td>71.208</td><td>18.514</td>
+					</tr>
+					<tr>
+						<td>144.723</td><td>57.889</td>
+					</tr>
+					<tr>
+						<td>128.803</td><td>96.602</td>
+					</tr>
+					<tr>
+						<td>64.949</td><td>129.898</td>
+					</tr>
+					<tr>
+						<td>70.572</td><td>141.145</td>
+					</tr>
+					<tr>
+						<td>75.548</td><td>151.097</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>The calculated Boyle temperature is 1714.135 K.</p>
+
+			<p class="center"><img src="{{ '/img/pvDiagrams-boyle.png' | prepend: site.baseurl }}" width="1082" height="841" alt="PV-P diagram and Boyle temperature"></p>
+			

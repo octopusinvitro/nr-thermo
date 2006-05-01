@@ -1,0 +1,30 @@
+		<footer class="site-footer">
+			<div class="wrapper">
+
+				<h2>{{ site.title }}</h2>
+
+				<div class="footer-col">
+					<ul>
+						<li><a href="{{ site.git_url }}/{{ site.git_username }}/{{ site.git_repo }}/">About this site</a></li>
+						<li>Code syntax highlighting uses <a href="http://prismjs.com/">prismjs</a> by Lea Verou.</li>
+					</ul>
+				</div>
+
+				<div class="footer-col">
+					<ul class="submenu">{% if site.git_username %}
+						<li>
+{% include github.svg %}							<a href="{{ site.git_url }}/{{ site.git_username }}">{{ site.git_username }}</a>
+						</li>{% endif %}{% if site.twitter_username %}
+
+						<li>
+{% include twitter.svg %}							<a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a>
+						</li>{% endif %}
+					</ul>
+				</div>
+
+				<div class="footer-col">
+					<p class="text">{{ site.description }} June 14, 2006</p>
+				</div>
+
+			</div>
+		</footer>

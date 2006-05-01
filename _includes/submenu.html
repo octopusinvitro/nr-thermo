@@ -1,0 +1,6 @@
+{% assign sorted_pages = site.pages | sort:"date" %}
+			<ul class="submenu">{% for cat in site.categories %}{% if page.dir contains cat[0] %}{% for sorted in sorted_pages %}{% if sorted.dir == page.dir %}
+				<li{% if page.url == sorted.url %} class="active"{% endif %}><a href="{{ sorted.url }}">{{ sorted.stitle }}</a></li>{% endif %}{% endfor %}{% endif %}{% endfor %}
+			</ul>
+
+

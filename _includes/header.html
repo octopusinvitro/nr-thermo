@@ -1,0 +1,11 @@
+		<header class="main-header">
+			<nav role="navigation">
+				<ul class="wrapper">
+					<li><a href="{{ site.url }}">Home</a></li>{% for cat in site.categories %}
+					<li><a href="{{ site.baseurl }}/{{ cat[0] }}/">{{ cat[1] }}</a></li>{% endfor %}
+					<li><a href="{{ site.baseurl }}/forkit">Fork it!</a></li>
+				</ul>
+			</nav>
+
+			<h1 class="site-title"><span class="s1">Numerical Recipes</span> <span class="s2">applied<br />to</span> <span class="s3">Thermodynamics</span></h1>
+		</header>

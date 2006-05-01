@@ -1,0 +1,151 @@
+body {
+	font-family:      $base-font-family;
+	font-size:        $base-font-size;
+	font-weight:      400;
+	line-height:      $base-line-height;
+	color:            $text-color;
+	background-color: $background-color;
+	background-image:
+		repeating-linear-gradient(135deg, $grey-color-light, #fff 1px, transparent 1px, transparent 4px),
+		repeating-linear-gradient( 45deg, $grey-color-light, #fff 1px, transparent 1px, transparent 4px);
+	background-size: 100% 100%;
+}
+
+::-moz-selection {
+    background:  $green1;
+    text-shadow: none;
+}
+
+::selection {
+    background:  $green1	;
+    text-shadow: none;
+}
+
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+	margin-bottom: $spacing-unit / 2;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+ul, ol {
+	margin-left: $spacing-unit;
+}
+
+li {
+	> ul,
+	> ol {
+		 margin-bottom: 0;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-weight: 700;
+	color: $brand-color;
+	text-transform: uppercase;
+}
+
+a {
+	color: $brand-color;
+	transtition: .4s all ease;
+
+	&:visited {
+		color: darken($brand-color, 5%);
+	}
+
+	&:hover {
+		color: lighten($brand-color, 5%);
+	}
+}
+
+table {
+	width: 90%;
+	margin: auto;
+	font-size: .8em;
+	color: $grey-color-dark;
+	text-align: center;
+	background-color: #fff;
+}
+
+caption {
+}
+
+th {
+	background-color: $grey-color;
+	color: #fff;
+}
+
+tr {
+	border-bottom: .05em solid $grey-color;
+	
+	&:last-of-type {
+		border: 0;
+	}
+}
+
+caption,
+th,
+td {
+	padding: .5em;
+}
+
+pre, code {
+	font-size: .8em;
+}
+
+.wrapper {
+	margin:    0 auto;
+	max-width: 40em;
+	padding:   0 $spacing-unit;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; 
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.center {
+	text-align: center;
+}
+
+svg {
+	display: block;
+	margin: auto;
+	width:  2em;
+	height: 2em;
+	vertical-align: middle;
+	margin-bottom: 1em;
+
+	path {
+		fill: $brand-color;
+		transition: fill .4s;
+	}
+}
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	opacity: 0;
+}

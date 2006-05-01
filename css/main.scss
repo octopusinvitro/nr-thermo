@@ -1,0 +1,34 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Our variables
+/*$base-font-family: "Source Sans Pro","Lucida Sans","Lucida Grande","Lucida Sans Unicode", sans-serif;*/
+$base-font-family: "Georgia", "Palatino", "Times","Times New Roman", serif;
+$base-font-size:   1.3em;
+$small-font-size:  $base-font-size*0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     1.5em;
+
+$text-color:       #132333;
+$background-color: rgba(239, 239, 239, 1);
+$brand-color:      #e67e22;
+
+$grey-color:       #d0d1d2;
+$grey-color-light: #efefef;
+$grey-color-dark:  #777;
+$green1:           rgba(26, 188, 156, .3); /*  (light) */
+$green2:           rgba(22, 160, 133, .3); /*  (dark)  */
+$green11:          #1abc9c;
+$green22:          #16a085;
+
+/* Import partials from `sass_dir` (defaults to `_sass`) */
+@import
+        "normalize",
+        "base",
+        "layout",
+        "prismnew",
+		"mediaqueries"
+;
