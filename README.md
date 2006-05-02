@@ -43,7 +43,7 @@ $ ./filename
 
 All code is [MIT licensed](http://opensource.org/licenses/MIT).
 
-Numerical Recipes libraries are licensed according to [this terms](http://www.nr.com/licenses/redistribute.html).
+Numerical Recipes libraries are licensed according to [these terms](http://www.nr.com/licenses/redistribute.html).
 
 ## Dedicated site
 
