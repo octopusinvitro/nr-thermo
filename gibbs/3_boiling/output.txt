@@ -116,7 +116,8 @@ Recalculated chemical excess potentials:
        0.987400        1.813349     4977.725482
        1.000000        0.000000     5236.620726
 
-Nuevos valores calculados por el metodo de Broyden
+New values calculated by the Broyden method:
+
              y1              y2         P [KPa]
 
        0.000000        1.000000       30.636000
