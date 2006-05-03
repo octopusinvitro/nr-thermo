@@ -39,12 +39,15 @@ $ gcc filename.c -o filename -lm
 $ ./filename
 ```
 
-## Licenses
-
-All code is [MIT licensed](http://opensource.org/licenses/MIT).
-
-Numerical Recipes libraries are licensed according to [these terms](http://www.nr.com/licenses/redistribute.html).
-
 ## Dedicated site
 
 Learn more at http://nrthermo.tk
+
+## Licenses
+
+[![License](https://img.shields.io/badge/gnu-license-green.svg?style=flat)](https://opensource.org/licenses/GPL-2.0)
+All code is [GNU licensed](https://opensource.org/licenses/GPL-2.0).
+
+[![License](https://img.shields.io/badge/NR3-license-green.svg?style=flat)](http://www.nr.com/licenses/redistribute.html)
+Numerical Recipes libraries are licensed according to [these terms](http://www.nr.com/licenses/redistribute.html).
+
